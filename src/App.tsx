@@ -1,24 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Store } from './Store'
+import {IEpisode, IAction} from './interface'
 import './app.css'
-
-
-interface IEpisode {
-  id: number
-  url: string
-  name: string
-  season: number
-  number: number
-  airdate: string
-  airtime: string
-  airstamp: string
-  runtime: number
-  image: {
-    medium: string,
-    original: string
-  }
-  summary: string
-}
 
 
 function App(): JSX.Element {
@@ -35,11 +18,21 @@ function App(): JSX.Element {
     })
   }
 
-  const toggleFavAction = (episode: IEpisode) => {
-    return dispatch({
-      type: 'ADD_FAV',
-      payload: episode
-    })
+  const toggleFavAction = (episode: IEpisode): IAction => {
+    const episodeInFav = state.favourites.includes(episode);
+
+    if(episodeInFav){ //Episode exists
+      const favWithoutEpisode = state.favourites.filter((fav:IEpisode) => fav.id !== episode.id);
+      return dispatch({
+        type: 'SUB_FAV',
+        payload: favWithoutEpisode
+      })
+    }else{ //Episode does not exist
+      return dispatch({
+        type: 'ADD_FAV',
+        payload: episode
+      })
+    }
   }
 
   //Init Fetch
@@ -50,12 +43,17 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <header className="header">
-        <h1>Rick and Morty</h1>
-        <p>Pick your favourite episode!</p>
+        <div>
+          <h1>Rick and Morty</h1>
+          <p>Pick your favourite episode!</p>
+        </div>
+        
+        <p>Favourites: {state.favourites.length}</p>
       </header>
       <main className="main">
         <section className="episode-layout">
           {state.episodes.map((episode: IEpisode) => {
+            const isFav = state.favourites.find((fav: IEpisode)=> fav.id === episode.id);
             return (
               <section className="episode-box" key={episode.id}>
                 <img src={episode.image.medium} alt={`Rich and Morty- Episode: ${episode.name}`} />
@@ -63,7 +61,9 @@ function App(): JSX.Element {
                 <section>
                   <div>
                   <p>Season: {episode.season} | Number: {episode.number}</p>
-                  <button type="submit" onClick={()=> toggleFavAction(episode)}>Fav</button>
+                  <button className={isFav ? 'btn btn-disabled':'btn'} type="submit" onClick={()=> toggleFavAction(episode)}>
+                    {isFav ? 'Bookmarked' : 'Bookmark'}
+                  </button>
                   </div>
                 </section>
               </section>

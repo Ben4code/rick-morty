@@ -2,7 +2,12 @@
 html{
   font-size: 14px;
 }
-
+h4{
+  font-size: 1rem;
+}
+p{
+  font-size: 1rem;
+}
 body{
   font-size: 10px;
   margin: 0;
@@ -11,10 +16,11 @@ body{
 }
 
 .main{
-  width: 90%;
-  margin: 0 auto;
+  background: #ddd;
 }
 .episode-layout{
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 2rem;
@@ -22,14 +28,47 @@ body{
 
 .episode-box{
   margin-top: 5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0rem .1rem .7rem .1rem rgba(0, 0, 0, .2);
+}
+.episode-box img{
+  width: 100%;
 }
 
 .header{
   display: flex;
   justify-content: space-between;
   background: white;
-  border: 1px solid black;
-  padding: .5rem;
+  padding: .5rem 7rem;
   position: sticky;
   top: 0;
+  box-shadow: 0rem .1rem .7rem .1rem rgba(0, 0, 0, .2);
+}
+.episode-box h4{
+  height: 3rem;
+}
+.btn{
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: .5rem;
+  border-radius: 5px;
+  border: none;
+  background: tomato;
+  color: wheat;
+  width: 100%;
+  display: block;
+  outline: none;
+  transition: all .2s ease;
+}
+.btn:hover{
+  background: red;
+  box-shadow: 0rem .1rem .7rem .1rem rgba(0, 0, 0, .2);
+}
+.btn-disabled{
+  background: gray;
+}
+.btn-disabled:hover{
+  background: #444;
 }
