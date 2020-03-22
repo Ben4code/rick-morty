@@ -24,3 +24,9 @@ export interface IAction {
   type: string,
   payload: any
 }
+
+export interface IEpisodeProps{
+  episodes: IEpisode[],
+  favourites:  IEpisode[],
+  toggleFavAction: ()=>{}
+}
