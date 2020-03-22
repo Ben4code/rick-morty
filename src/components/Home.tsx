@@ -12,7 +12,12 @@ const Home = ():JSX.Element => {
   const fetchDataAction = async () => {
     // const URL = 'http://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes'
     const URL = 'http://api.tvmaze.com/singlesearch/shows?q=castlevania&embed=episodes'
-    const res = await fetch(URL);
+    const res = await fetch(URL, {
+      method: "POST",
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
+    });
     const data = await res.json();
     return dispatch({
       type: 'FETCH_DATA',
