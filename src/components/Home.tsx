@@ -13,7 +13,7 @@ const Home = ():JSX.Element => {
     // const URL = 'http://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes'
     const URL = 'https://api.tvmaze.com/singlesearch/shows?q=castlevania&embed=episodes'
     const res = await fetch(URL, {
-      method: "POST",
+      method: "GET",
         headers: {
             "Access-Control-Allow-Origin": "*"
         }
