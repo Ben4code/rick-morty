@@ -28,5 +28,5 @@ export interface IAction {
 export interface IEpisodeProps{
   episodes: IEpisode[],
   favourites:  IEpisode[],
-  toggleFavAction: ()=>{}
+  toggleFavAction: (episode: IEpisode)=> IAction 
 }
