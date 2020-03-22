@@ -15,7 +15,7 @@ const Home = ():JSX.Element => {
     const res = await fetch(URL, {
       method: "GET",
         headers: {
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": URL
         }
     });
     const data = await res.json();
