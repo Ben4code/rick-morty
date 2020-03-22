@@ -42,7 +42,8 @@ a{
 }
 .main{
   background: #ddd;
-  min-height: 90vh;
+  min-height: 70vh;
+  padding-bottom: 5rem;
 }
 .episode-layout{
   width: 90%;
@@ -71,6 +72,13 @@ a{
   padding: .5rem 7rem;
   position: sticky;
   top: 0;
+  box-shadow: 0rem .1rem .7rem .1rem rgba(0, 0, 0, .2);
+}
+.footer{
+  color: #fff;
+  text-align: center;
+  background-color: tomato;
+  padding: .5rem 7rem;
   box-shadow: 0rem .1rem .7rem .1rem rgba(0, 0, 0, .2);
 }
 .episode-box h4{
